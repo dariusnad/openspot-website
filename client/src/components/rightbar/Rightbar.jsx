@@ -1,24 +1,22 @@
 import "./rightbar.css";
+import Map from "../map/Map";
 
 export default function Rightbar({ user }) {
 
     const HomeRightbar = () => {
       return (
         <>
+          <h4>Map View:</h4><br></br>
+          <Map />
+          <br></br>
         </>
       );
     };
 
-    const ProfileRightbar = () => {
-      return (
-        <>
-        </>
-      );
-    };
     return (
       <div className="rightbar">
         <div className="rightbarWrapper">
-          {user ? <ProfileRightbar /> : <HomeRightbar />}
+          <HomeRightbar />
         </div>
       </div>
     );

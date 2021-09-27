@@ -17,11 +17,15 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/">
-          {user ? <Home /> : <Login />}
+          {/*{user ? <Home /> : <Login />}*/}
+          <Home />
         </Route>
-        <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
+        <Route path="/login">
+          {user ? <Redirect to="/" /> : <Login />}
+        </Route>
         <Route path="/register">
-          {user ? <Redirect to="/" /> : <Register />}
+          {/*{user ? <Redirect to="/" /> : <Register />}*/}
+          <Register />
         </Route>
         <Route path="/profile/:username">
           <Profile />
