@@ -1,29 +1,92 @@
 import React, { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
+import { GoogleMap, LoadScript, Rectangle} from '@react-google-maps/api';
 
-class SimpleMap extends Component {
-  static defaultProps = {
-    center: {
-      lat: 49.2488,
-      lng: -122.9805
-    },
-    zoom: 20
-  };
+const containerStyle = {
+  width: '100%',
+  height: '400px'
+};
 
+const mapOptions = {
+  tilt:0,
+  mapTypeId:"satellite"
+}
+
+const center = {
+  lat: 	49.237955,
+  lng: -123.074673
+};
+
+const bounds_1 = {
+  north: 49.237937,
+  south: 49.237894,
+  east: -123.074585,
+  west: -123.074620
+};
+
+const bounds_2 = {
+  north: 49.237937,
+  south: 49.237894,
+  east: -123.074551,
+  west: -123.074620
+};
+
+const bounds_3 = {
+  north: 49.237937,
+  south: 49.237894,
+  east: -123.074517,
+  west: -123.074551
+};
+
+const bounds_4 = {
+  north: 49.238002,
+  south: 49.237956,
+  east: -123.074515,
+  west: -123.074550
+};
+
+const bounds_5 = {
+  north: 49.238119,
+  south: 49.238061,
+  east: -123.074493,
+  west: -123.074528
+};
+
+class Map extends Component {
   render() {
     return (
-      // Important! Always set the container height explicitly
-      <div style={{ height: '50vh', width: '100%' }}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: 'AIzaSyBcSZYEwllcuU3vYgA_cKeNRGLeuA9JLsU' }}
-          options={map => ({ mapTypeId: map.MapTypeId.SATELLITE })}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
+    <LoadScript
+        googleMapsApiKey="AIzaSyBcSZYEwllcuU3vYgA_cKeNRGLeuA9JLsU"
+      >
+    <GoogleMap
+          mapContainerStyle={containerStyle}
+          center={center}
+          zoom={20}
+          options = {mapOptions}
         >
-        </GoogleMapReact>
-      </div>
-    );
+    <Rectangle
+      options={{ strokeOpacity: 0.8, fillColor:"#00FF00"}}
+      bounds={bounds_1}
+    />
+    <Rectangle
+      options={{ strokeOpacity: 0.8, fillColor:"#00FF00"}}
+      bounds={bounds_2}
+    />
+    <Rectangle
+      options={{ strokeOpacity: 0.8, fillColor:"#00FF00"}}
+      bounds={bounds_3}
+    />
+    <Rectangle
+      options={{ strokeOpacity: 0.8, fillColor:"#FF0000"}}
+      bounds={bounds_4}
+    />
+    <Rectangle
+      options={{ strokeOpacity: 0.8, fillColor:"#FF0000"}}
+      bounds={bounds_5}
+    />
+      </GoogleMap>
+      </LoadScript>
+    )
   }
 }
 
-export default SimpleMap;
+export default Map;
