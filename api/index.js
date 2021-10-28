@@ -5,7 +5,7 @@ const dotenv = require("dotenv");
 const helmet = require("helmet");
 const morgan = require("morgan");
 const multer = require("multer");
-const userRoute = require("./routes/users");
+//const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
 const router = express.Router();
 const path = require("path");
@@ -46,7 +46,7 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 });
 
 app.use("/api/auth", authRoute);
-app.use("/api/users", userRoute);
+//app.use("/api/users", userRoute);
 
 app.listen(PORT, () => {
   console.log("Server running on port ", PORT);
