@@ -14,13 +14,6 @@ const park_bounds = {
   west: -123.075574
 }
 
-const poly_1 = [
-  { lat: 49.2381108, lng: -123.0749832 },
-  { lat: 49.2380661, lng: -123.0749812 },
-  { lat: 49.2380666, lng: -123.0749558 },
-  { lat: 49.2381112, lng: -123.0749558 },
-  { lat: 49.2381108, lng: -123.0749832 }
-]
 
 const mapOptions = {
   tilt:0,
@@ -46,6 +39,13 @@ class GMap extends Component {
     },
     {
       "position" : [{lat: 49.2381105, lng: -123.0749449}, {lat: 49.2380663, lng: -123.074945}, {lat: 49.2380654, lng: -123.0749194}, {lat: 49.2381114, lng: -123.0749175}, {lat: 49.2381105, lng: -123.0749449}]
+    },
+    {
+      "position" : [{lat: 49.238111, lng: -123.0749108},
+        {lat: 49.2380677, lng: -123.0749114},
+        {lat: 49.2380677, lng: -123.0748846},
+        {lat: 49.2381106, lng: -123.0748859},
+        {lat: 49.238111, lng: -123.0749108}]
     }
   ]
   };
@@ -62,7 +62,6 @@ class GMap extends Component {
     <LoadScript
         googleMapsApiKey="AIzaSyBcSZYEwllcuU3vYgA_cKeNRGLeuA9JLsU"
       >
-        
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
