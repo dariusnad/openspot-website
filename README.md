@@ -1,5 +1,5 @@
 # OpenSpot Website
-Note: Be sure to run ```npm install`` for both server and client
+Note: Be sure to run ```npm install``` for both server and client
 
 # To start webserver:
 1. cd to server
@@ -8,4 +8,4 @@ Note: Be sure to run ```npm install`` for both server and client
 
 # To start REACT app:
 1. cd to client
-2. run: ```yarn start``
+2. run: ```yarn start```
