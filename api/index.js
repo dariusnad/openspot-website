@@ -6,6 +6,8 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const multer = require("multer");
 const authRoute = require("./routes/auth");
+const mapRoute = require("./routes/map");
+
 const router = express.Router();
 const path = require("path");
 const PORT = 8800;
@@ -27,6 +29,8 @@ app.use(morgan("common"));
 
 
 app.use("/api/auth", authRoute);
+app.use("/api/map", mapRoute);
+
 
 app.listen(PORT, () => {
   console.log("Server running on port ", PORT);
