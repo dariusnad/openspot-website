@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import axios from "axios";
 import { GoogleMap, LoadScript, Polygon} from '@react-google-maps/api';
-
 
 const containerStyle = {
   width: '100%',
@@ -31,32 +31,53 @@ const center = {
 
 
 class GMap extends Component {
-  state = {
-    locations:
-    [
-    {
-      "position" : [{lat: 49.2381108, lng: -123.0749832}, {lat: 49.2380661, lng: -123.0749812}, {lat: 49.2380666, lng: -123.0749558}, {lat: 49.2381112, lng: -123.0749558}, {lat: 49.2381108, lng: -123.0749832}]
-    },
-    {
-      "position" : [{lat: 49.2381105, lng: -123.0749449}, {lat: 49.2380663, lng: -123.074945}, {lat: 49.2380654, lng: -123.0749194}, {lat: 49.2381114, lng: -123.0749175}, {lat: 49.2381105, lng: -123.0749449}]
-    },
-    {
-      "position" : [{lat: 49.238111, lng: -123.0749108},
-        {lat: 49.2380677, lng: -123.0749114},
-        {lat: 49.2380677, lng: -123.0748846},
-        {lat: 49.2381106, lng: -123.0748859},
-        {lat: 49.238111, lng: -123.0749108}]
+  constructor(props)
+  {
+    super(props);
+  
+    this.state = {
+      parking_spots: []
     }
-  ]
-  };
-  renderpolygons = () => {
-    return this.state.locations.map((location, i) => {
+    this.get_parking_spots = this.get_parking_spots.bind(this);
+  } 
+
+  async get_parking_spots() {
+    axios.get("/map/spots/Kensington")
+    .then(res => {
+      try {
+        let tmpArray = []
+        //Push the polygon coordinates into an array
+        for (var i = 0; i < res.data.length; i++) {
+           tmpArray.push(res.data[i].polygons)
+        }
+        this.setState(
+          {parking_spots: tmpArray
+          });
+      } catch (err) {
+        console.log(err);
+      }
+    })
+  }
+
+componentDidMount()
+{
+  //Send the get request and retreive the spots
+  this.get_parking_spots();
+}
+
+renderpolygons = () => {
+  //Wait for the parking spots array to have coordinates in them
+  if(this.state.parking_spots.length !== 0)
+  {
+    return this.state.parking_spots.map((location, i) => {
       return <Polygon
       options={{fillColor: "green", fillOpacity: 1}}
-      paths = {location.position}
+      paths = {this.state.parking_spots[i]}
        />
     })
   }
+}
+
   render() {
     return (
     <LoadScript
@@ -68,9 +89,9 @@ class GMap extends Component {
           zoom={21}
           options={mapOptions}
         >
-      <div>
+          <div>
           {this.renderpolygons()}
-      </div>
+          </div>
         </GoogleMap>
       </LoadScript>
     )
