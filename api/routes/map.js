@@ -7,7 +7,6 @@ const client = new MongoClient(connstring,{useUnifiedTopology: true});
 
 // Grab spots for the parking lot requested
 router.get("/spots/:lotName", async (req, res) => {
-    // console.log(req.params.id)
     var parkingLotName = req.params.lotName;
         await client.connect();
         const db = client.db('Backend');   
