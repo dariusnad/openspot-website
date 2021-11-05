@@ -48,7 +48,7 @@ class GMap extends Component {
         let tmpArray = []
         //Push the polygon coordinates into an array
         for (var i = 0; i < res.data.length; i++) {
-           tmpArray.push(res.data[i].polygons)
+           tmpArray.push(res.data[i])
         }
         this.setState(
           {parking_spots: tmpArray
@@ -61,8 +61,16 @@ class GMap extends Component {
 
 componentDidMount()
 {
-  //Send the get request and retreive the spots
+  //Initial call to retrieve data from DB
   this.get_parking_spots();
+
+  //Timer to refresh component every thirty seconds and update spots
+  this.interval = setInterval(() => {this.get_parking_spots()}, 30000);
+}
+
+componentWillUnmount() 
+{
+  clearInterval(this.interval);
 }
 
 renderpolygons = () => {
@@ -71,8 +79,8 @@ renderpolygons = () => {
   {
     return this.state.parking_spots.map((location, i) => {
       return <Polygon
-      options={{fillColor: "green", fillOpacity: 1}}
-      paths = {this.state.parking_spots[i]}
+      options={{fillColor: this.state.parking_spots[i].occupied ? "red" : "green", fillOpacity: 1}}
+      paths = {this.state.parking_spots[i].polygons}
        />
     })
   }

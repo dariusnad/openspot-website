@@ -4,11 +4,8 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const helmet = require("helmet");
 const morgan = require("morgan");
-const multer = require("multer");
 const authRoute = require("./routes/auth");
 const mapRoute = require("./routes/map");
-const router = express.Router();
-const path = require("path");
 const PORT = 8800;
 
 dotenv.config();
