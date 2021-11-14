@@ -1,22 +1,50 @@
-import React from 'react';
-import {slide as Menu} from 'react-burger-menu';
+import React, { Component } from 'react';
+import { slide as Menu } from "react-burger-menu";
+import axios from "axios";
+import "./Sidebar.css";
 
-class Sidebar extends React.Component {
-    showSettings (event) {
-      event.preventDefault();
-    }
+class Sidebar extends Component {
+  constructor(props) {
+    super(props);
   
-    render () {
-      // NOTE: You also need to provide styles, see https://github.com/negomi/react-burger-menu#styling
-      return (
-        <Menu className="menu">
-          <a id="home" className="menu-item" href="google.com" >Home</a>
-          {/* <a id="about" className="menu-item" href="/about">About</a>
-          <a id="contact" className="menu-item" href="/contact">Contact</a>
-          <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a> */}
-        </Menu>
-      );
+    this.state = {
+      parkingLot : "Kensignton",
+      menuOpen: false
     }
+
+    this.changeParkingLot = this.changeParkingLot.bind(this)
+  } 
+
+  changeParkingLot(e) {
+    var parkingLotName = e.target.innerText;
+    this.setState({
+      parkingLot : parkingLotName,
+      menuOpen : false
+    })
+    console.log(this.state.parkingLot);
   }
 
+  render(){
+    return (
+      <Menu>
+        <a onClick={(e) => this.changeParkingLot(e)} className="menu-item">
+          Home
+        </a>
+  
+        <a onClick={(e) => this.changeParkingLot(e)} className="menu-item" >
+          About
+        </a>
+  
+        <a onClick={(e) => this.changeParkingLot(e)} className="menu-item" >
+          Services
+        </a>
+  
+        <a onClick={(e) => this.changeParkingLot(e)} className="menu-item" >
+          Contact us
+        </a>
+      </Menu>
+    )
+  }
+  
+}
 export default Sidebar;

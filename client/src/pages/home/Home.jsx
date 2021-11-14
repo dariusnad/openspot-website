@@ -7,13 +7,11 @@ import "./home.css"
 export default function Home() {
   return (
     <>
-      <Topbar />
-      <div className="sidebar">
-        <Sidebar/>
-      </div>
-      <div className="homeContainer">
+      <Topbar/>
+      <Sidebar pageWrapId={"page-wrap"}/>
+      {/* <div className="homeContainer">
        <Rightbar/>
-      </div>
+      </div> */}
     </>
   );
 }
