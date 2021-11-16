@@ -3,7 +3,7 @@
 .topbarContainer {
   height: 50px;
   width: 100%;
-  background-color: #3f3d56;
+  background-color:  #89cff0;
   display: flex;
   align-items: center;
   position: sticky;
@@ -64,7 +64,7 @@
   cursor: pointer;
   font-weight: bold;
   color: white;
-  background-color: #3f3d56;
+  background-color: #89cff0;
 }
 
 .topbarIcons {

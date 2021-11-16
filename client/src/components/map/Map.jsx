@@ -4,8 +4,8 @@ import { GoogleMap, LoadScript, Polygon} from '@react-google-maps/api';
 
 
 const containerStyle = {
-  width: '100%',
-  height: '750px'
+  width: '75%',
+  height: '700px'
 };
 
 
@@ -20,6 +20,8 @@ class GMap extends Component {
       mapoptions: {
         tilt: 0,
         mapTypeId: "satellite",
+        streetViewControl: false,
+        mapTypeControl: false,
         restriction: 
         {
           latLngBounds: [],
@@ -56,7 +58,6 @@ class GMap extends Component {
   axios.get("/map/parking_lot/Kensington Progress Update Demo")
   .then(res => {
     try {
-      console.log(res.data)
       this.setState(prevstate =>
         ({
           ...prevstate,
@@ -115,7 +116,7 @@ renderpolygons = () => {
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={this.state.lot_center}
-          zoom={21}
+          zoom={1}
           options={this.state.mapoptions}
         >
           <div>

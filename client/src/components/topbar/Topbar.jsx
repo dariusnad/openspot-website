@@ -38,21 +38,13 @@ export default function Topbar() {
       </div>
       <div className="topbarRight">
         <div className="topbarLinks">
-        <button className="topbarLink" onClick={loginOnClick}>
-              Client Log In
-        </button>
-        <button className="topbarLink" onClick={logoutOnClick}>
-              Client Log Out
-        </button>
-            <button className="topbarLink">
-              Text Notifications
-        </button>
-            <button className="topbarLink">
-              About
-        </button>
-            <button className="topbarLink">
-              Contact
-        </button>
+        <span className="topbarLink" onClick={loginOnClick}>Client Log In</span>
+        <span className="topbarLink" onClick={logoutOnClick}>Log Out</span>
+            <Link to="/TextNotifications">
+              <span className="topbarLink">Text Notifications</span>
+            </Link>
+            <span className="topbarLink">About</span>
+            <span className="topbarLink">Contact Us</span>
         </div>
       </div>
     </div>

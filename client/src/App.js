@@ -1,6 +1,8 @@
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
+import TextNotifications from "./pages/TextNotifications/TextNotifications";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -25,6 +27,9 @@ function App() {
         <Route path="/register">
           {/*{user ? <Redirect to="/" /> : <Register />}*/}
           <Register />
+        </Route>
+        <Route path="/TextNotifications">
+          <TextNotifications />
         </Route>
       </Switch>
     </Router>
