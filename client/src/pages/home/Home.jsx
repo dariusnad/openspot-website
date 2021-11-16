@@ -9,9 +9,9 @@ export default function Home() {
     <>
       <Topbar/>
       <Sidebar pageWrapId={"page-wrap"}/>
-      {/* <div className="homeContainer">
+      { <div className="homeContainer">
        <Rightbar/>
-      </div> */}
+      </div> }
     </>
   );
 }

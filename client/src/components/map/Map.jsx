@@ -1,32 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component} from 'react';
 import axios from "axios";
 import { GoogleMap, LoadScript, Polygon} from '@react-google-maps/api';
+
 
 const containerStyle = {
   width: '100%',
   height: '750px'
-};
-
-const park_bounds = {
-  north: 49.238530,
-  south: 49.237567,
-  east:  -123.073509,
-  west: -123.075574
-}
-
-
-const mapOptions = {
-  tilt:0,
-  mapTypeId:"satellite",
-  restriction: {
-    latLngBounds: park_bounds,
-    strictBounds: true,
-  }
-}
-
-const center = {
-  lat: 	49.237955,
-  lng: -123.074673
 };
 
 
@@ -34,11 +13,25 @@ class GMap extends Component {
   constructor(props)
   {
     super(props);
-  
     this.state = {
-      parking_spots: []
+      parking_spots: [],
+      lot_bounds: [],
+      lot_center: [],
+      mapoptions: {
+        tilt: 0,
+        mapTypeId: "satellite",
+        restriction: 
+        {
+          latLngBounds: [],
+          strictBounds: true,
+        }
+      }
     }
     this.get_parking_spots = this.get_parking_spots.bind(this);
+    this.get_parking_lot_info = this.get_parking_lot_info.bind(this);
+
+    this.get_parking_lot_info();
+
   } 
 
   async get_parking_spots() {
@@ -59,11 +52,35 @@ class GMap extends Component {
     })
   }
 
+  async get_parking_lot_info() {
+  axios.get("/map/parking_lot/Kensington Progress Update Demo")
+  .then(res => {
+    try {
+      console.log(res.data)
+      this.setState(prevstate =>
+        ({
+          ...prevstate,
+          mapoptions: {
+            ...prevstate.mapoptions,
+            restriction: {
+                ...prevstate.mapoptions.restriction, 
+                   latLngBounds: res.data[0].bounds
+                }
+            },
+            lot_center : res.data[0].center
+        }
+        ))
+    }
+     catch (err) {
+      console.log(err);
+    }
+})
+}
+
 componentDidMount()
 {
   //Initial call to retrieve data from DB
   this.get_parking_spots();
-
   //Timer to refresh component every thirty seconds and update spots
   this.interval = setInterval(() => {this.get_parking_spots()}, 30000);
 }
@@ -87,15 +104,19 @@ renderpolygons = () => {
 }
 
   render() {
+    if(this.state.mapoptions.restriction.latLngBounds === null)
+    {
+      <div>Loading...</div>
+    }
     return (
     <LoadScript
         googleMapsApiKey="AIzaSyBcSZYEwllcuU3vYgA_cKeNRGLeuA9JLsU"
       >
         <GoogleMap
           mapContainerStyle={containerStyle}
-          center={center}
+          center={this.state.lot_center}
           zoom={21}
-          options={mapOptions}
+          options={this.state.mapoptions}
         >
           <div>
           {this.renderpolygons()}
