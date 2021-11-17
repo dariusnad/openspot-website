@@ -4,8 +4,8 @@ import { GoogleMap, LoadScript, Polygon} from '@react-google-maps/api';
 
 
 const containerStyle = {
-  width: '75%',
-  height: '700px'
+  width: '95%',
+  height: '800px'
 };
 
 
@@ -31,9 +31,6 @@ class GMap extends Component {
     }
     this.get_parking_spots = this.get_parking_spots.bind(this);
     this.get_parking_lot_info = this.get_parking_lot_info.bind(this);
-
-    this.get_parking_lot_info();
-
   } 
 
   async get_parking_spots() {
@@ -65,7 +62,7 @@ class GMap extends Component {
             ...prevstate.mapoptions,
             restriction: {
                 ...prevstate.mapoptions.restriction, 
-                   latLngBounds: res.data[0].bounds
+                   latLngBounds : res.data[0].bounds
                 }
             },
             lot_center : res.data[0].center
@@ -80,6 +77,7 @@ class GMap extends Component {
 
 componentDidMount()
 {
+  this.get_parking_lot_info();
   //Initial call to retrieve data from DB
   this.get_parking_spots();
   //Timer to refresh component every thirty seconds and update spots
@@ -116,7 +114,7 @@ renderpolygons = () => {
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={this.state.lot_center}
-          zoom={1}
+          zoom={5}
           options={this.state.mapoptions}
         >
           <div>

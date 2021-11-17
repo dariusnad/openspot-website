@@ -20,8 +20,9 @@ a{
 }
 
 .container{
-    max-width: 1024px;  
+    max-width: 1000px;  
     margin: auto;
+    padding: 0px 10px 0px 0;
 }
 
 .nav-brand{
@@ -54,17 +55,17 @@ a{
     width: 100%;
 }
 
-#site-main{
+#site-main-map{
     margin-top: 0em;
     font-family: 'Barlow', sans-serif;
 }
 
-#site-main .container .box-nav > a{
+#site-main-map .container .box-nav > a{
     font-size: 1em;
     padding: .5em 1em;
 }
 
-#site-main .container form{
+#site-main-map .container form{
     margin: 2em 0;
 }
 
