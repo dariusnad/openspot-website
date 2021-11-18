@@ -8,40 +8,53 @@ class Sidebar extends Component {
     super(props);
   
     this.state = {
-      parkingLot : "Kensignton",
-      menuOpen: false
+      curParkingLot : "Kensignton",
+      menuOpen: false,
+      parkingLotList : []
     }
 
     this.changeParkingLot = this.changeParkingLot.bind(this)
+    this.getParkingLots = this.getParkingLots.bind(this)
   } 
 
   changeParkingLot(e) {
     var parkingLotName = e.target.innerText;
     this.setState({
-      parkingLot : parkingLotName,
+      curParkingLot : parkingLotName,
       menuOpen : false
     })
-    console.log(this.state.parkingLot);
+    console.log(this.state.curParkingLot);
   }
 
+  getParkingLots() {
+    // GET request for the available parking lot names
+    var resParkingLots = ["Kensignton", "Soroush Backyard", "test"]
+    this.setState({
+      curParkingLot : resParkingLots[0],
+      parkingLotList : resParkingLots
+    })
+    return
+  }
+
+  genMenuList = () => {
+    this.getParkingLots();    
+    var menuItems = [];
+    console.log(this.state.parkingLotList)
+    for (var i = 0; i < this.state.parkingLotList.length; i++) {
+      menuItems.push(
+        <a onClick={(e) => this.changeParkingLot(e)} className="menu-item">
+          {this.state.parkingLotList[i]}
+        </a>
+      )
+    }
+    return menuItems;
+  }
+  
   render(){
+    const menuItems = this.genMenuList()
     return (
       <Menu>
-        <a onClick={(e) => this.changeParkingLot(e)} className="menu-item">
-          Home
-        </a>
-  
-        <a onClick={(e) => this.changeParkingLot(e)} className="menu-item" >
-          About
-        </a>
-  
-        <a onClick={(e) => this.changeParkingLot(e)} className="menu-item" >
-          Services
-        </a>
-  
-        <a onClick={(e) => this.changeParkingLot(e)} className="menu-item" >
-          Contact us
-        </a>
+        {menuItems}
       </Menu>
     )
   }
