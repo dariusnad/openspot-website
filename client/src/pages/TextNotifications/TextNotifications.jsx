@@ -18,9 +18,9 @@ const send_form = async (e) =>
         parking_lot: parking_lot.current.value,
         phone_number: phone_number.current.value
       }
-      try {
-        console.log(new_driver);
-        //await axios.post("", new_driver);
+      try 
+      {
+        axios.post("/text/text_notifications", new_driver);
         alert("You have successfully subscribed!");
         history.push("/TextNotifications");
       } catch (err) {
@@ -38,7 +38,7 @@ const remove_driver = async (e) =>
     }
       try {
         console.log(driver);
-        //await axios.delete("", driver);
+        axios.post("/text/unsubscribe", driver);
         alert("You have successfully unsubscribed");
         history.push("/TextNotifications");
       } catch (err) {
@@ -73,8 +73,8 @@ const remove_driver = async (e) =>
                     </div>
                     <div className="form-group">
                         <label htmlFor="phonenumber" className="text-light">Phone Number</label>
-                        <input type="tel" ref={phone_number} name="phonenumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" defaultValue="" required placeholder="Phone Number"></input>
-                        <small>Format: 123-456-7890</small>
+                        <input type="tel" ref={phone_number} name="phonenumber" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" defaultValue="" required placeholder="Phone Number"></input>
+                        <small>Format: 1234567890</small>
                     </div>
                     <div className="form-group">
                         <button type="submit" className="btn text-dark update">Subscribe</button>
@@ -97,8 +97,8 @@ const remove_driver = async (e) =>
                     </div>
                     <div className="form-group">
                         <label htmlFor="phonenumber" className="text-light">Phone Number</label>
-                        <input type="tel" ref={rem_phone_number} name="phonenumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" defaultValue="" required placeholder="Phone Number"></input>
-                        <small>Format: 123-456-7890</small>
+                        <input type="tel" ref={rem_phone_number} name="phonenumber" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" defaultValue="" required placeholder="Phone Number"></input>
+                        <small>Format: 1234567890</small>
                     </div>
                     <div className="form-group">
                         <button type="submit" className="btn text-dark update">Unsubscribe</button>

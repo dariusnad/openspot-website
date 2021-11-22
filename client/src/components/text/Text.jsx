@@ -4,7 +4,8 @@ import "./text.css"
 import { useHistory } from "react-router";
 
 export default function Text() {
-    const parking_lot = useRef();
+    //Will be set using hamburger menu
+    var lot_name = "Kensington";
     const phone_number = useRef();
     const history = useHistory();
     
@@ -12,12 +13,11 @@ export default function Text() {
     {
         e.preventDefault();
         const new_driver = {
-            parking_lot: parking_lot.current.value,
+            parking_lot: lot_name,
             phone_number: phone_number.current.value
           }
           try {
-            console.log(new_driver);
-            //await axios.post("", new_driver);
+            axios.post("/text/text_notifications", new_driver);
             alert("You have successfully subscribed!");
             history.push("/");
           } catch (err) {
@@ -29,7 +29,7 @@ export default function Text() {
         <main id="site-main-map">
             <div className="container">
                 <div className="form-title text-center">
-                    <h2 className="text-dark">Kensington Text Notification Subscription</h2>
+                    <h2 className="text-dark">{lot_name} Text Notification Subscription</h2>
                     <span className="text-light">
                         Use the below form to subscribe and receive text notifications!
                     </span>
@@ -37,13 +37,9 @@ export default function Text() {
                 <form onSubmit = {send_form} id="add_number">
                     <div className="new_number">
                         <div className="form-group">
-                            <label htmlFor="name" className="text-light">Parking Lot Name</label>
-                            <input type="text" ref={parking_lot} name="name" defaultValue="" required placeholder="Parking Lot Name"></input>
-                        </div>
-                        <div className="form-group">
                             <label htmlFor="phonenumber" className="text-light">Phone Number</label>
-                            <input type="tel" ref={phone_number} name="phonenumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" defaultValue="" required placeholder="Phone Number"></input>
-                            <small>Format: 123-456-7890</small>
+                            <input type="tel" ref={phone_number} name="phonenumber" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" defaultValue="" required placeholder="Phone Number"></input>
+                            <small>Format: 1234567890</small>
                         </div>
                         <div className="form-group">
                             <button type="submit" className="btn text-dark update">Subscribe</button>

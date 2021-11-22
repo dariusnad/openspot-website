@@ -1,5 +1,4 @@
 import "./topbar.css";
-import { Search} from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 
@@ -26,15 +25,6 @@ export default function Topbar() {
         <Link to="/" style={{ textDecoration: "none" }}>
           <span className="logo">OpenSpot</span>
         </Link>
-      </div>
-      <div className="topbarCenter">
-        <div className="searchbar">
-          <Search className="searchIcon" />
-          <input
-            placeholder="Search"
-            className="searchInput"
-          />
-        </div>
       </div>
       <div className="topbarRight">
         <div className="topbarLinks">

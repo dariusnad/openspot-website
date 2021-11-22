@@ -5,6 +5,7 @@ import { useHistory } from "react-router";
 
 export default function Register() {
   const username = useRef();
+  const parking_lot = useRef();
   const email = useRef();
   const password = useRef();
   const passwordAgain = useRef();
@@ -18,6 +19,7 @@ export default function Register() {
       const user = {
         username: username.current.value,
         email: email.current.value,
+        parking_lot: parking_lot.current.value,
         password: password.current.value,
       };
       try {
@@ -50,6 +52,12 @@ export default function Register() {
               placeholder="Username"
               required
               ref={username}
+              className="loginInput"
+            />
+            <input
+              placeholder="Parking Lot"
+              required
+              ref={parking_lot}
               className="loginInput"
             />
             <input
