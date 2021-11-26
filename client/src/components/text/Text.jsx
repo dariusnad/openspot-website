@@ -8,7 +8,6 @@ export default function Text() {
     var lot_name = "Kensington";
     const phone_number = useRef();
     const history = useHistory();
-    
     const send_form = async (e) =>  
     {
         e.preventDefault();

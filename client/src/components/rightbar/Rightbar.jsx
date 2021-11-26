@@ -1,16 +1,10 @@
 import "./rightbar.css";
 import Map from "../map/Map";
-import Text from "../text/Text";
 
-export default function Rightbar({ user }) {
+export default function Rightbar() {
     return (
       <>
-      <div className="rightbar">
-        <div className="rightbarWrapper">
           <HomeRightbar />
-        </div>
-      </div>
-      <Text />
       </>
     );
   }
@@ -18,7 +12,11 @@ export default function Rightbar({ user }) {
   const HomeRightbar = () => {
     return (
       <>
-        <Map />
+      <div className="rightbar">
+        <div className="rightbarWrapper">
+          <Map />
+        </div>
+      </div>
       </>
     );
   };

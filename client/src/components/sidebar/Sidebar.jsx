@@ -14,7 +14,7 @@ class Sidebar extends Component {
       menuItems: []
     }
     this.changeParkingLot = this.changeParkingLot.bind(this)
-    this.getParkingLots = this.get_parking_lots.bind(this)
+    this.get_parking_lots = this.get_parking_lots.bind(this)
   } 
 
   //Stores selected parking lot
@@ -28,7 +28,8 @@ class Sidebar extends Component {
 
   componentDidMount()
   {
-        this.get_parking_lots();
+      this.get_parking_lots();
+      console.log(this.state.curParkingLot);
   }
 
   async get_parking_lots() {

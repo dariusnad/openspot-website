@@ -42,9 +42,6 @@ export default function Register() {
       <div className="loginWrapper">
         <div className="loginLeft">
           <h3 className="loginTitle">OpenSpot</h3>
-          <span className="loginDesc">
-            Smart Parking Solutions
-          </span>
         </div>
         <div className="loginRight">
           <form className="loginBox" onSubmit={handleClick}>
@@ -65,7 +62,6 @@ export default function Register() {
               required
               ref={email}
               className="loginInput"
-              type="email"
             />
             <input
               placeholder="Password"

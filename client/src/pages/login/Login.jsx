@@ -30,15 +30,11 @@ export default function Login() {
       <div className="loginWrapper">
         <div className="loginLeft">
           <h3 className="loginTitle">OpenSpot</h3>
-          <span className="loginDesc">
-            Smart Parking Solutions
-          </span>
         </div>
         <div className="loginRight">
           <form className="loginBox" onSubmit={handleClick}>
             <input
               placeholder="Email"
-              type="email"
               required
               className="loginInput"
               ref={email}

@@ -33,8 +33,12 @@ export default function Topbar() {
             <Link to="/TextNotifications">
               <span className="topbarLink">Text Notifications</span>
             </Link>
-            <span className="topbarLink">About</span>
+            <Link to="/About">
+              <span className="topbarLink">About</span>
+            </Link>
+            <Link to="/Contact">
             <span className="topbarLink">Contact Us</span>
+            </Link>
         </div>
       </div>
     </div>
