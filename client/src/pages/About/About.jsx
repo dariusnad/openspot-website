@@ -1,18 +1,11 @@
 import "./About.css"
+import Topbar from "../../components/topbar/Topbar"
 
 export default function About() {
 
   return (
     <>
-    <header id="header">
-        <nav>
-            <div className="container">
-                <div className="text-center">
-                    <a href="/" className = "nav-brand text-dark">OpenSpot</a>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <Topbar />
     <main id="site-main">
         <div className="container">
             <div className="form-title text-center">

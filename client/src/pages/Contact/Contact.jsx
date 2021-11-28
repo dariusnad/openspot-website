@@ -2,6 +2,7 @@ import axios from "axios";
 import { useRef } from "react";
 import "./Contact.css"
 import { useHistory } from "react-router";
+import Topbar from "../../components/topbar/Topbar"
 
 export default function TextNotifications() {
 
@@ -33,15 +34,7 @@ const send_form = async (e) =>
 
   return (
     <>
-    <header id="header">
-        <nav>
-            <div className="container">
-                <div className="text-center">
-                    <a href="/" className = "nav-brand text-dark">OpenSpot</a>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <Topbar />
     <main id="site-main">
         <div className="container">
             <div className="form-title text-center">
@@ -71,7 +64,7 @@ const send_form = async (e) =>
                         <textarea type = "message" rows="4" cols="50" ref={message} name="message" defaultValue="" required placeholder="Enter your message here"></textarea>
                     </div>
                     <div className="form-group">
-                        <button type="submit" className="btn text-dark update">Submit</button>
+                        <button type="submit" className="btn text-light update">Submit</button>
                     </div>
                 </div>
             </form>

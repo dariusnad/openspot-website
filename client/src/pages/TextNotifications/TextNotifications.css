@@ -116,7 +116,7 @@ a{
 }
 
 #add_number .form-group .btn.hover{
-    background-color: var(--dark);
+    background-color: var(--light);
     color: var(--border);
 }
 

@@ -10,7 +10,6 @@ import { useHistory } from "react-router";
 
 function Text(props) {
   var lot_name = props.data1.toString().replace(/\n/g, '');
-  //console.log(props.data1);
   const phone_number = useRef();
   const history = useHistory();
   const send_form = async (e) =>  
@@ -48,7 +47,7 @@ function Text(props) {
                           <small>Format: 1234567890</small>
                       </div>
                       <div className="form-group">
-                          <button type="submit" className="btn text-dark update">Subscribe</button>
+                          <button type="submit" className="btn text-light update">Subscribe</button>
                       </div>
                   </div>
               </form>
@@ -153,7 +152,7 @@ renderpolygons = () => {
       return <Polygon
       options={{fillColor: this.state.parking_spots[i].occupied ? "red" : "green", fillOpacity: 1}}
       paths = {this.state.parking_spots[i].polygons}
-       />
+      key = {i}/>
     })
   }
 }
@@ -171,7 +170,7 @@ renderpolygons = () => {
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={this.state.lot_center}
-          zoom={3}
+          zoom={1}
           options={this.state.mapoptions}
         >
           <div>
@@ -234,7 +233,7 @@ class Sidebar extends Component {
     if(this.state.parkingLotList.length !== 0)
     {
       return this.state.parkingLotList.map((m, i) => {
-        return <a onClick={(e) => this.changeParkingLot(e)} className="menu-item" href="/">
+        return <a onClick={(e) => this.changeParkingLot(e)} className="menu-item" href="/" key = {i}>
           {this.state.parkingLotList[i]} <br />
         </a>
       })

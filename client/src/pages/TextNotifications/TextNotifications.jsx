@@ -2,6 +2,7 @@ import axios from "axios";
 import { useRef } from "react";
 import "./TextNotifications.css"
 import { useHistory } from "react-router";
+import Topbar from "../../components/topbar/Topbar"
 
 export default function TextNotifications() {
 
@@ -48,15 +49,7 @@ const remove_driver = async (e) =>
 
   return (
     <>
-    <header id="header">
-        <nav>
-            <div className="container">
-                <div className="text-center">
-                    <a href="/" className = "nav-brand text-dark">OpenSpot</a>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <Topbar />
     <main id="site-main">
         <div className="container">
             <div className="form-title text-center">
@@ -77,7 +70,7 @@ const remove_driver = async (e) =>
                         <small>Format: 1234567890</small>
                     </div>
                     <div className="form-group">
-                        <button type="submit" className="btn text-dark update">Subscribe</button>
+                        <button type="submit" className="btn text-light update">Subscribe</button>
                     </div>
                 </div>
             </form>
@@ -101,7 +94,7 @@ const remove_driver = async (e) =>
                         <small>Format: 1234567890</small>
                     </div>
                     <div className="form-group">
-                        <button type="submit" className="btn text-dark update">Unsubscribe</button>
+                        <button type="submit" className="btn text-light update">Unsubscribe</button>
                     </div>
                 </div>
             </form>
