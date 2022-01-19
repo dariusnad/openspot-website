@@ -64,7 +64,7 @@ const send_form = async (e) =>
                         <textarea type = "message" rows="4" cols="50" ref={message} name="message" defaultValue="" required placeholder="Enter your message here"></textarea>
                     </div>
                     <div className="form-group">
-                        <button type="submit" className="btn text-light update">Submit</button>
+                        <button type="submit" className="btn text-white update">Submit</button>
                     </div>
                 </div>
             </form>

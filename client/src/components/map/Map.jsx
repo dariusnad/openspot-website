@@ -47,7 +47,7 @@ function Text(props) {
                           <small>Format: 1234567890</small>
                       </div>
                       <div className="form-group">
-                          <button type="submit" className="btn text-light update">Subscribe</button>
+                          <button type="submit" className="btn text-white update">Subscribe</button>
                       </div>
                   </div>
               </form>
