@@ -5,6 +5,7 @@ import { useHistory } from "react-router";
 
 export default function Register() {
   const username = useRef();
+  const parking_lot = useRef();
   const email = useRef();
   const password = useRef();
   const passwordAgain = useRef();
@@ -18,6 +19,7 @@ export default function Register() {
       const user = {
         username: username.current.value,
         email: email.current.value,
+        parking_lot: parking_lot.current.value,
         password: password.current.value,
       };
       try {
@@ -40,9 +42,6 @@ export default function Register() {
       <div className="loginWrapper">
         <div className="loginLeft">
           <h3 className="loginTitle">OpenSpot</h3>
-          <span className="loginDesc">
-            Smart Parking Solutions
-          </span>
         </div>
         <div className="loginRight">
           <form className="loginBox" onSubmit={handleClick}>
@@ -53,11 +52,16 @@ export default function Register() {
               className="loginInput"
             />
             <input
+              placeholder="Parking Lot"
+              required
+              ref={parking_lot}
+              className="loginInput"
+            />
+            <input
               placeholder="Email"
               required
               ref={email}
               className="loginInput"
-              type="email"
             />
             <input
               placeholder="Password"
