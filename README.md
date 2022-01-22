@@ -6,6 +6,6 @@ Note: Be sure to run ```npm install``` for both server and client
 1. cd to server
 2. run: ```nodemon ./index.js```
 
-# To start REACT app:
+# To start the application:
 1. cd to client
 2. run: ```yarn start```
